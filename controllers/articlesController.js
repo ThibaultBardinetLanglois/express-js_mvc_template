@@ -6,7 +6,7 @@ exports.getAllArticles =  async (req, res) => {
     const articles = await articlesServices.getAll();
     res.status(200).send(articles);
   } catch (e) {
-    res.status(500).send(e);
+    res.status(e.status).send(e);
   }
 }
 
@@ -16,7 +16,7 @@ exports.getArticleById =  async (req, res) => {
     const article = await articlesServices.getById(id);
     res.status(200).send(article);
   } catch (e) {
-    res.status(500).send(e);
+    res.status(e.status).send(e);
   }
 }
 
@@ -26,7 +26,7 @@ exports.createArticle =  async (req, res) => {
     const createdArticle = await articlesServices.create(article);
     res.status(201).send(createdArticle);
   } catch (e) {
-    res.status(500).send(e);
+    res.status(e.status).send(e);
   }
 }
 
@@ -36,7 +36,7 @@ exports.updateArticle =  async (req, res) => {
     const updatedArticle = await articlesServices.update(article);
     res.status(200).send(updatedArticle);
   } catch (e) {
-    res.status(500).send(e);
+    res.status(e.status).send(e);
   }
 }
 
@@ -49,6 +49,6 @@ exports.deleteArticle =  async (req, res) => {
     }
     
   } catch (e) {
-    res.status(500).send(e);
+    res.status(e.status).send(e);
   }
 }

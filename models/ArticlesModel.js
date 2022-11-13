@@ -37,8 +37,9 @@ exports.update = async (article) => {
         return await pool 
                 .then(connection => connection.query(sqlQuery, [author, content, id]))
                         .then(async updated => {
-                             const updatedArticle = await this.findById(id)[0];   
-                             return updatedArticle[0];
+                             const updatedArticle = await this.findById(id); 
+                             const returnedArticle = {...updatedArticle[0]};
+                             return returnedArticle;
                         })
                 .catch(err => {
                         console.log(err);
